@@ -1,0 +1,43 @@
+{
+  "name": "supertest-as-promised",
+  "version": "0.0.1",
+  "description": "Supercharge supertest with a promise interface",
+  "main": "index.js",
+  "scripts": {
+    "test": "mocha"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/WhoopInc/supertest-as-promised.git"
+  },
+  "keywords": [
+    "supertest",
+    "superagent",
+    "request",
+    "tdd",
+    "bdd",
+    "http",
+    "test",
+    "testing",
+    "promise",
+    "promised"
+  ],
+  "author": "Nikhil Benesch <benesch@whoop.com>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/WhoopInc/supertest-as-promised/issues"
+  },
+  "homepage": "https://github.com/WhoopInc/supertest-as-promised",
+  "peerDependencies": {
+    "supertest": "*"
+  },
+  "devDependencies": {
+    "chai": "^1.9.1",
+    "chai-as-promised": "^4.1.1",
+    "mocha": "^1.18.2",
+    "supertest": "*"
+  },
+  "dependencies": {
+    "lodash": "^2.4.1"
+  }
+}
