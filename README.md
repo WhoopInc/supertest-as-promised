@@ -76,6 +76,22 @@ describe("GET /kittens", function () {
 });
 ```
 
+### Agents
+
+If you use a SuperTest agent to persist cookies, those are thenable too:
+
+```js
+var agent = require("supertest-as-promised").agent(app);
+
+agent
+  .get("/ugly-kitteh")
+  .expect(404)
+  .then(function () {
+    // ...
+  })
+```
+
+
 ### Promisey goodness
 
 To start, only the `then` method is exposed. But once you've called `.then`

@@ -31,14 +31,46 @@ describe("supertestAsPromised", function () {
       return request.get("/home").expect(500).should.eventually.be.rejected;
     });
   });
+
+  describe("TestAgent instances", function () {
+    var agent = supertestAsPromised.agent(server);
+
+    describe("#then", function () {
+      it("should return a promise", function () {
+        agent.get("/home").then().should.be.an.instanceOf(Promise);
+      });
+    });
+
+    it("should fulfill if all assertions pass", function () {
+      return agent.get("/home").expect(200).should.eventually.be.fulfilled;
+    });
+
+    it("should fulfill with the response", function () {
+      return agent.get("/home").then(function (res) {
+        res.text.should.equal("helo");
+      });
+    });
+
+    it("should reject if an assertion fails", function () {
+      return agent.get("/home").expect(500).should.eventually.be.rejected;
+    });
+  });
 });
 
 describe("supertest", function () {
-  var request = supertest(server);
-
   describe("Test instances", function () {
+    var request = supertest(server);
+
     it("should not be a promise", function () {
       request.get("/home").should.not.have.property("then");
+    });
+  });
+
+  describe("TestAgent instances", function () {
+    var agent = supertest.agent(server);
+
+    it("should not be a promise", function () {
+      agent.get("/home").should.not.have.property("then");
     });
   });
 });

@@ -1,4 +1,4 @@
-var _ = require("lodash")
+var methods = require("methods")
   , Promise = require("bluebird")
   , supertest = require("supertest");
 
@@ -7,17 +7,29 @@ function then(onFulfilled, onRejected) {
     .then(onFulfilled, onRejected);
 }
 
-module.exports = function () {
-  // Let SuperTest work its magic on whatever arguments we receive
-  var request = supertest.apply(null, arguments);
+// Creates a new object that inherits from `factory`, where each HTTP method
+// (`get`, `post`, etc.) is overriden to inject a `then` method into the
+// returned `Test` instance.
+function extend(factory) {
+  var out = Object.create(factory);
 
-  // Wrap all SuperTest functions (`get`, `post`, etc.) so we can inject a
-  // `then` method into the returned `Test` instance
-  return _.mapValues(request, function wrap(fn) {
-    return function () {
-      var test = fn.apply(null, arguments);
+  methods.forEach(function (method) {
+    out[method] = function () {
+      var test = factory[method].apply(factory, arguments);
       test.then = then;
       return test;
     };
   });
+
+  return out;
+}
+
+module.exports = function () {
+  var request = supertest.apply(null, arguments);
+  return extend(request);
+};
+
+module.exports.agent = function () {
+  var agent = supertest.agent.apply(null, arguments);
+  return extend(agent);
 };
