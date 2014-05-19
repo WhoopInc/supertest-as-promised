@@ -52,7 +52,7 @@ thenable:
 
 ```js
 var express = require("express")
-  , request = require("supertestAsPromised");
+  , request = require("supertest-as-promised");
 
 var app = express();
 
