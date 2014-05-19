@@ -7,11 +7,11 @@ function then(onFulfilled, onRejected) {
     .then(onFulfilled, onRejected);
 }
 
-// Creates a new object that inherits from `factory`, where each HTTP method
-// (`get`, `post`, etc.) is overriden to inject a `then` method into the
-// returned `Test` instance.
-function extend(factory) {
-  var out = Object.create(factory);
+// Creates a new object that wraps `factory`, where each HTTP method (`get`,
+// `post`, etc.) is overriden to inject a `then` method into the returned `Test`
+// instance.
+function wrap(factory) {
+  var out = {};
 
   methods.forEach(function (method) {
     out[method] = function () {
@@ -26,10 +26,10 @@ function extend(factory) {
 
 module.exports = function () {
   var request = supertest.apply(null, arguments);
-  return extend(request);
+  return wrap(request);
 };
 
 module.exports.agent = function () {
   var agent = supertest.agent.apply(null, arguments);
-  return extend(agent);
+  return wrap(agent);
 };
