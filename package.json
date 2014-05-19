@@ -4,7 +4,7 @@
   "description": "Supercharge supertest with a promise interface",
   "main": "index.js",
   "scripts": {
-    "changelog": "changelog --markdown > CHANGELOG.md",
+    "changelog": "changelog all --markdown > CHANGELOG.md",
     "test": "mocha"
   },
   "repository": {
