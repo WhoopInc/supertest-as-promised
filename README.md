@@ -1,9 +1,14 @@
 <a href="http://promisesaplus.com/">
   <img src="https://promises-aplus.github.io/promises-spec/assets/logo-small.png"
-    align="right" valign="top" alt="Promises/A+ logo" />
+    align="right" valign="top" alt="Promises/A+ logo">
 </a>
 
 # supertest-as-promised
+
+<a href="https://travis-ci.org/WhoopInc/supertest-as-promised">
+  <img src="https://travis-ci.org/WhoopInc/supertest-as-promised.svg?branch=master"
+    align="right" valign="top" alt="Build Status">
+</a>
 
 SuperTest as Promised supercharges [SuperTest] with a `then` method.
 
