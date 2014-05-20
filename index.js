@@ -3,8 +3,8 @@ var methods = require("methods")
   , supertest = require("supertest");
 
 function then(onFulfilled, onRejected) {
-  return Promise.promisify(this.end, this)()
-    .then(onFulfilled, onRejected);
+  var end = Promise.promisify(this.end, this);
+  return end().then(onFulfilled, onRejected);
 }
 
 // Creates a new object that wraps `factory`, where each HTTP method (`get`,
