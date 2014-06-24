@@ -2,6 +2,12 @@ var methods = require("methods")
   , Promise = require("bluebird")
   , supertest = require("supertest");
 
+// supertest uses del instead of delete
+var deleteIndex = methods.indexOf("delete");
+if (deleteIndex !== -1) {
+  methods.splice(deleteIndex, 1, "del");
+}
+
 function then(onFulfilled, onRejected) {
   var end = Promise.promisify(this.end, this);
   return end().then(onFulfilled, onRejected);
