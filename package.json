@@ -37,7 +37,11 @@
     "chai-as-promised": "^4.1.1",
     "changelog": "^1.0.5",
     "mocha": "^1.18.2",
-    "supertest": "*"
+    "supertest": "*",
+
+    "express": "3.1.0",
+    "rewire": "^2.0.1",
+    "should": "3.3.1"
   },
   "dependencies": {
     "bluebird": "^1.2.4",
