@@ -1,3 +1,19 @@
+1.0.0 / 2014-07-01
+==================
+
+  * release: v1.0.0
+  * support `del` by passing through to upstream's alias
+    Closes [#3](https://github.com/WhoopInc/supertest-as-promised/issues/3). Closes [#4](https://github.com/WhoopInc/supertest-as-promised/issues/4).
+  * Alias del and delete to supertest.del
+  * test: run upstream tests against our wrapped module
+  * test: switch to expect interface
+  * README: add build badge
+  * .travis.yml: add continuous integration configuration
+  * refactor `then` method
+    `Promise.promisify` is awkward when invoked immediately. Save to
+    temporary variable for clarity.
+  * CHANGELOG: update for v0.1.1
+
 0.1.1 / 2014-05-19
 ==================
 
