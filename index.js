@@ -2,11 +2,8 @@ var methods = require("methods")
   , Promise = require("bluebird")
   , supertest = require("supertest");
 
-// Alias both .del() and .delete() to supertest's .del()
+// Support SuperTest's historical `del` alias for `delete`
 methods.push("del");
-var methodAliases = {
-  "delete": "del"
-};
 
 function then(onFulfilled, onRejected) {
   var end = Promise.promisify(this.end, this);
@@ -21,8 +18,7 @@ function wrap(factory) {
 
   methods.forEach(function (method) {
     out[method] = function () {
-      var methodName = methodAliases[method] || method;
-      var test = factory[methodName].apply(factory, arguments);
+      var test = factory[method].apply(factory, arguments);
       test.then = then;
       return test;
     };
