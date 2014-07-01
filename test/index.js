@@ -1,4 +1,5 @@
-var http = require("http")
+var expect = require("chai").expect
+  , http = require("http")
   , Promise = require("bluebird")
   , supertest = require("supertest")
   , supertestAsPromised = require("..");
@@ -13,22 +14,22 @@ describe("supertestAsPromised", function () {
   describe("Test instances", function () {
     describe("#then", function () {
       it("should return a promise", function () {
-        request.get("/home").then().should.be.an.instanceOf(Promise);
+        expect(request.get("/home").then()).to.be.an.instanceOf(Promise);
       });
     });
 
     it("should fulfill if all assertions pass", function () {
-      return request.get("/home").expect(200).should.eventually.be.fulfilled;
+      return expect(request.get("/home").expect(200)).to.eventually.be.fulfilled;
     });
 
     it("should fulfill with the response", function () {
       return request.get("/home").then(function (res) {
-        res.text.should.equal("helo");
+        expect(res.text).to.equal("helo");
       });
     });
 
     it("should reject if an assertion fails", function () {
-      return request.get("/home").expect(500).should.eventually.be.rejected;
+      return expect(request.get("/home").expect(500)).to.eventually.be.rejected;
     });
   });
 
@@ -37,22 +38,22 @@ describe("supertestAsPromised", function () {
 
     describe("#then", function () {
       it("should return a promise", function () {
-        agent.get("/home").then().should.be.an.instanceOf(Promise);
+        expect(agent.get("/home").then()).to.be.an.instanceOf(Promise);
       });
     });
 
     it("should fulfill if all assertions pass", function () {
-      return agent.get("/home").expect(200).should.eventually.be.fulfilled;
+      return expect(agent.get("/home").expect(200)).to.eventually.be.fulfilled;
     });
 
     it("should fulfill with the response", function () {
       return agent.get("/home").then(function (res) {
-        res.text.should.equal("helo");
+        expect(res.text).to.equal("helo");
       });
     });
 
     it("should reject if an assertion fails", function () {
-      return agent.get("/home").expect(500).should.eventually.be.rejected;
+      return expect(agent.get("/home").expect(500)).to.eventually.be.rejected;
     });
   });
 });
