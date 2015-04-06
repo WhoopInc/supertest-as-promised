@@ -18,6 +18,12 @@ describe("supertestAsPromised", function () {
       });
     });
 
+    describe("#wait", function () {
+      it("should wait 1000ms then return a promise", function () {
+        expect(request.get("/home").wait(1000)).to.be.an.instanceOf(Promise);
+      });
+    });
+
     it("should fulfill if all assertions pass", function () {
       return expect(request.get("/home").expect(200)).to.eventually.be.fulfilled;
     });
@@ -39,6 +45,12 @@ describe("supertestAsPromised", function () {
     describe("#then", function () {
       it("should return a promise", function () {
         expect(agent.get("/home").then()).to.be.an.instanceOf(Promise);
+      });
+    });
+
+    describe('#wait', function () {
+      it("should wait 100ms then return a promise", function () {
+        expect(agent.get("/home").wait(1000)).to.be.an.instanceOf(Promise);
       });
     });
 

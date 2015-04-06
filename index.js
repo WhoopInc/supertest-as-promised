@@ -10,6 +10,11 @@ function then(onFulfilled, onRejected) {
   return end().then(onFulfilled, onRejected);
 }
 
+function wait(onFulfilled, onRejected) {
+  var end = Promise.promisify(this.end, this);
+  return end().delay(onFulfilled);
+}
+
 // Creates a new object that wraps `factory`, where each HTTP method (`get`,
 // `post`, etc.) is overriden to inject a `then` method into the returned `Test`
 // instance.
@@ -20,6 +25,7 @@ function wrap(factory) {
     out[method] = function () {
       var test = factory[method].apply(factory, arguments);
       test.then = then;
+      test.wait = wait;
       return test;
     };
   });
