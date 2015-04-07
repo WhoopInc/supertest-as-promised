@@ -32,17 +32,17 @@
     "supertest": "*"
   },
   "devDependencies": {
-    "chai": "^1.9.1",
-    "chai-as-promised": "^4.1.1",
-    "mocha": "^1.18.2",
+    "chai": "^2.2.0",
+    "chai-as-promised": "^4.3.0",
+    "rewire": "^2.3.1",
     "supertest": "*",
 
     "express": "3.1.0",
-    "rewire": "^2.0.1",
+    "mocha": "1.19.0",
     "should": "3.3.1"
   },
   "dependencies": {
-    "bluebird": "^1.2.4",
-    "methods": "^1.0.0"
+    "bluebird": "^2.9.24",
+    "methods": "^1.1.1"
   }
 }

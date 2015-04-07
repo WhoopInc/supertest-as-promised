@@ -1,3 +1,8 @@
+2.0.0 / UNRELEASED
+==================
+
+  * update Bluebird to v2.x series
+
 1.0.0 / 2014-07-01
 ==================
 
