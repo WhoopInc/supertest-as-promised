@@ -1,4 +1,4 @@
-2.0.0 / UNRELEASED
+2.0.0 / 2015-04-06
 ==================
 
   * add `toPromise()` method to explicitly convert request to promise

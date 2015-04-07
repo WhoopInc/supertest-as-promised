@@ -179,8 +179,22 @@ var request = require("supertest-as-promised");
 var request = require("supertest");
 ```
 
+
+## Versions
+
+We follow [semver]: the major version number will be upgraded with any breaking
+change. Breaking changes in each major version are listed below. Consult the
+[changelog] for a list of meaningful new features in each version; consult the
+commit log for a complete list.
+
+### Breaking changes in 2.0
+
+* [Bluebird][bluebird] has been upgraded to version 2.9.24.
+
 [bluebird]: https://github.com/petkaantonov/bluebird
 [bluebird-api]: https://github.com/petkaantonov/bluebird/blob/master/API.md#promiseisdynamic-value---boolean
+[changelog]: CHANGELOG.md
 [peer-dependency]: http://blog.nodejs.org/2013/02/07/peer-dependencies/
+[semver]: http://semver.org
 [SuperTest]: https://github.com/visionmedia/supertest
 [when.js]: https://github.com/cujojs/when
