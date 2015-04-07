@@ -114,6 +114,34 @@ request(app)
 
 See the [Bluebird API][bluebird-api] for everything that's available.
 
+### BYOP: Bring your own `Promise`
+
+You can supply own promise library so that the promises returned have your
+convenience methods of choice.
+
+Simply call the SuperTest as Promised module with a ES6-compliant `Promise`
+constructor, and you'll get back a new module configured to return your custom
+promises. To swap in [when.js], for example:
+
+```js
+var when = require("when")
+  , request;
+
+request = require("supertest-as-promised")(when.Promise);
+request(app)
+  .get("/when.js")
+  .then(function (res) { /* ... */ })
+  // I'm a when.js promise! (instanceof when.Promise == true)
+  .frobulate()
+
+request = require("supertest-as-promised");
+request(app)
+  .get("/bluebird.js")
+  .then(function (res) { /* .. */ })
+  // I'm back to the default Bluebird promise!
+```
+
+
 ## Installation
 
 ### Node
@@ -142,3 +170,4 @@ var request = require("supertest");
 [bluebird-api]: https://github.com/petkaantonov/bluebird/blob/master/API.md#promiseisdynamic-value---boolean
 [peer-dependency]: http://blog.nodejs.org/2013/02/07/peer-dependencies/
 [SuperTest]: https://github.com/visionmedia/supertest
+[when.js]: https://github.com/cujojs/when

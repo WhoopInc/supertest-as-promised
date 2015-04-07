@@ -1,6 +1,7 @@
 2.0.0 / UNRELEASED
 ==================
 
+  * support custom promise libraries
   * update Bluebird to v2.x series
 
 1.0.0 / 2014-07-01

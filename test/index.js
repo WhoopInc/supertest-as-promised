@@ -1,6 +1,7 @@
 var expect = require("chai").expect
   , http = require("http")
   , Promise = require("bluebird")
+  , PromiseWhen = require("when").Promise
   , supertest = require("supertest")
   , supertestAsPromised = require("..");
 
@@ -13,7 +14,16 @@ describe("supertestAsPromised", function () {
 
   describe("Test instances", function () {
     describe("#then", function () {
-      it("should return a promise", function () {
+      it("should return a bluebird promise by default", function () {
+        expect(request.get("/home").then()).to.be.an.instanceOf(Promise);
+      });
+
+      it("should return a when promise if configured with when", function () {
+        var request = supertestAsPromised(PromiseWhen)(server);
+        expect(request.get("/home").then()).to.be.an.instanceOf(PromiseWhen);
+      });
+
+      it("should still return a bluebird promise by default", function () {
         expect(request.get("/home").then()).to.be.an.instanceOf(Promise);
       });
     });
