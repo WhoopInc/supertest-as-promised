@@ -18,9 +18,9 @@ describe("supertestAsPromised", function () {
       });
     });
 
-    describe("#wait", function () {
+    describe("#delay", function () {
       it("should wait 1000ms then return a promise", function () {
-        expect(request.get("/home").wait(1000)).to.be.an.instanceOf(Promise);
+        expect(request.get("/home").then().delay(1000)).to.be.an.instanceOf(Promise);
       });
     });
 
@@ -48,9 +48,9 @@ describe("supertestAsPromised", function () {
       });
     });
 
-    describe('#wait', function () {
+    describe('#delay', function () {
       it("should wait 100ms then return a promise", function () {
-        expect(agent.get("/home").wait(1000)).to.be.an.instanceOf(Promise);
+        expect(agent.get("/home").delay(1000)).to.be.an.instanceOf(Promise);
       });
     });
 

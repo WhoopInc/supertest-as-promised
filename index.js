@@ -10,9 +10,9 @@ function then(onFulfilled, onRejected) {
   return end().then(onFulfilled, onRejected);
 }
 
-function wait(onFulfilled, onRejected) {
+function delay(delay_in_mili) {
   var end = Promise.promisify(this.end, this);
-  return end().delay(onFulfilled);
+  return end().delay(delay_in_mili);
 }
 
 // Creates a new object that wraps `factory`, where each HTTP method (`get`,
@@ -25,7 +25,7 @@ function wrap(factory) {
     out[method] = function () {
       var test = factory[method].apply(factory, arguments);
       test.then = then;
-      test.wait = wait;
+      test.delay = delay;
       return test;
     };
   });
