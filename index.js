@@ -3,7 +3,7 @@ var methods = require("methods")
   , supertest = require("supertest");
 
 // Support SuperTest's historical `del` alias for `delete`
-methods.push("del");
+methods = methods.concat("del");
 
 function then(onFulfilled, onRejected) {
   var end = Promise.promisify(this.end, this);
