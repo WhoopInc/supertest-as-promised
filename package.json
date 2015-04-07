@@ -4,7 +4,6 @@
   "description": "Supercharge supertest with a promise interface",
   "main": "index.js",
   "scripts": {
-    "changelog": "changelog all --markdown > CHANGELOG.md",
     "test": "mocha"
   },
   "repository": {
@@ -35,7 +34,6 @@
   "devDependencies": {
     "chai": "^1.9.1",
     "chai-as-promised": "^4.1.1",
-    "changelog": "^1.0.5",
     "mocha": "^1.18.2",
     "supertest": "*",
 
