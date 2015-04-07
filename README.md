@@ -114,6 +114,19 @@ request(app)
 
 See the [Bluebird API][bluebird-api] for everything that's available.
 
+You may find it cleaner to cast directly to a promise using the `toPromise`
+method:
+
+```js
+request(app)
+  .get("/kittens")
+  .expect(201)
+  .toPromise()
+  // I'm a real promise now!
+  .delay(function (res) { /* ... */ })
+  .then(function (res) { /* ... */ })
+```
+
 ### BYOP: Bring your own `Promise`
 
 You can supply own promise library so that the promises returned have your

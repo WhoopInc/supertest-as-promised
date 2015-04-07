@@ -13,18 +13,18 @@ describe("supertestAsPromised", function () {
   var request = supertestAsPromised(server);
 
   describe("Test instances", function () {
-    describe("#then", function () {
+    describe("#toPromise", function () {
       it("should return a bluebird promise by default", function () {
-        expect(request.get("/home").then()).to.be.an.instanceOf(Promise);
+        expect(request.get("/home").toPromise()).to.be.an.instanceOf(Promise);
       });
 
       it("should return a when promise if configured with when", function () {
         var request = supertestAsPromised(PromiseWhen)(server);
-        expect(request.get("/home").then()).to.be.an.instanceOf(PromiseWhen);
+        expect(request.get("/home").toPromise()).to.be.an.instanceOf(PromiseWhen);
       });
 
       it("should still return a bluebird promise by default", function () {
-        expect(request.get("/home").then()).to.be.an.instanceOf(Promise);
+        expect(request.get("/home").toPromise()).to.be.an.instanceOf(Promise);
       });
     });
 
@@ -46,9 +46,9 @@ describe("supertestAsPromised", function () {
   describe("TestAgent instances", function () {
     var agent = supertestAsPromised.agent(server);
 
-    describe("#then", function () {
+    describe("#toPromise", function () {
       it("should return a promise", function () {
-        expect(agent.get("/home").then()).to.be.an.instanceOf(Promise);
+        expect(agent.get("/home").toPromise()).to.be.an.instanceOf(Promise);
       });
     });
 

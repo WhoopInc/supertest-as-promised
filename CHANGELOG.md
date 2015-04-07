@@ -1,6 +1,7 @@
 2.0.0 / UNRELEASED
 ==================
 
+  * add `toPromise()` method to explicitly convert request to promise
   * support custom promise libraries
   * update Bluebird to v2.x series
 

@@ -10,7 +10,7 @@ methods = methods.concat("del");
 function makeModule(Promise) {
   var out;
 
-  function then(onFulfilled, onRejected) {
+  function toPromise() {
     var self = this;
     return new Promise(function (resolve, reject) {
       self.end(function (err, res) {
@@ -19,7 +19,11 @@ function makeModule(Promise) {
         }
         resolve(res);
       });
-    }).then(onFulfilled, onRejected);
+    });
+  }
+
+  function then(onFulfilled, onRejected) {
+    return this.toPromise().then(onFulfilled, onRejected);
   }
 
   // Creates a new object that wraps `factory`, where each HTTP method
@@ -31,6 +35,7 @@ function makeModule(Promise) {
     methods.forEach(function (method) {
       out[method] = function () {
         var test = factory[method].apply(factory, arguments);
+        test.toPromise = toPromise;
         test.then = then;
         return test;
       };
