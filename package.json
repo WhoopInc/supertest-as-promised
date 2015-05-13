@@ -38,9 +38,10 @@
     "supertest": "*",
     "when": "3.7.2",
 
-    "express": "3.1.0",
-    "mocha": "1.19.0",
-    "should": "3.3.1"
+    "body-parser": "~1.12.3",
+    "express": "3.20.2",
+    "mocha": "2.2.4",
+    "should": "6.0.1"
   },
   "dependencies": {
     "bluebird": "^2.9.24",
