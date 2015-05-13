@@ -1,3 +1,9 @@
+2.0.1 / 2015-05-12
+==================
+
+  * bump dev dependencies for compatibility with SuperTest's v1.0.0 test
+    suite.
+
 2.0.0 / 2015-04-06
 ==================
 
