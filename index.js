@@ -16,8 +16,9 @@ function makeModule(Promise) {
       self.end(function (err, res) {
         if (err) {
           reject(err);
+        } else {
+          resolve(res);
         }
-        resolve(res);
       });
     });
   }
