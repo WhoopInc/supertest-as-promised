@@ -1,4 +1,4 @@
-Unreleased / TBD
+2.0.2 / 2015-06-05
 ==================
 
   * fix double-resolution of promise upon error ([#11])
