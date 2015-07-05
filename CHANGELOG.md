@@ -1,3 +1,10 @@
+Unreleased / TBD
+==================
+
+  * fix double-resolution of promise upon error ([#11])
+
+Thanks, [@srussellextensis]!
+
 2.0.1 / 2015-05-12
 ==================
 
@@ -49,3 +56,7 @@
     Fixes [#1](https://github.com/WhoopInc/supertest-as-promised/issues/1).
   * add changelog
   * initial commit
+
+[#11]: https://github.com/WhoopInc/supertest-as-promised/pull/11
+
+[@srussellextensis]: https://github.com/srussellextensis
