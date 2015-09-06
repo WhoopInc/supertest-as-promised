@@ -72,16 +72,16 @@ describe("supertest", function () {
   describe("Test instances", function () {
     var request = supertest(server);
 
-    it("should not be a promise", function () {
-      request.get("/home").should.not.have.property("then");
+    it("should not have toPromise", function () {
+      request.get("/home").should.not.have.property("toPromise");
     });
   });
 
   describe("TestAgent instances", function () {
     var agent = supertest.agent(server);
 
-    it("should not be a promise", function () {
-      agent.get("/home").should.not.have.property("then");
+    it("should not have toPromise", function () {
+      agent.get("/home").should.not.have.property("toPromise");
     });
   });
 });
