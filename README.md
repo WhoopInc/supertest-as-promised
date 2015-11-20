@@ -123,7 +123,7 @@ request(app)
   .expect(201)
   .toPromise()
   // I'm a real promise now!
-  .delay(function (res) { /* ... */ })
+  .delay(10)
   .then(function (res) { /* ... */ })
 ```
 
