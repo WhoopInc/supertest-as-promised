@@ -165,8 +165,11 @@ $ npm install supertest-as-promised
 
 SuperTest as Promised lists [`supertest`][SuperTest] as a
 [peer dependency][peer-dependency], so it'll wrap whatever version of SuperTest
-you've asked for in your own `package.json`. If you don't specify a version of
-SuperTest, npm will use the latest.
+you've asked for in your own `package.json`.
+
+In earlier versions of NPM, failing to list SuperTest as a dependency would get
+you the latest version. In NPM 3, failing to list SuperTest as a dependency will
+generate a warning and SuperTest will not be installed.
 
 Do note that SuperTest as Promised is a well-behaved citizen and doesn't
 monkey-patch SuperTest directly:
