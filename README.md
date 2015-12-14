@@ -168,6 +168,8 @@ SuperTest as Promised lists [`supertest`][SuperTest] as a
 you've asked for in your own `package.json`. If you don't specify a version of
 SuperTest, npm will use the latest.
 
+**Note**: `supertest` will no longer be automatically installed to fulfill the peerDependency in npm 3+. Your application will need to depend on it explicitly.
+
 Do note that SuperTest as Promised is a well-behaved citizen and doesn't
 monkey-patch SuperTest directly:
 
