@@ -41,6 +41,14 @@ describe("supertestAsPromised", function () {
     it("should reject if an assertion fails", function () {
       return expect(request.get("/home").expect(500)).to.eventually.be.rejected;
     });
+
+    it("should be able to catch failed promises", function () {
+      return request.get("/home").expect(400).catch(function () {
+        return true;
+      }).then(function (caught) {
+        expect(caught).to.be.true;
+      });
+    });
   });
 
   describe("TestAgent instances", function () {
