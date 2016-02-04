@@ -99,9 +99,9 @@ agent
 
 ### Promisey goodness
 
-To start, only the `then` method is exposed. But once you've called `.then`
-once, you've got a proper [Bluebird] promise that supports the whole gamut of
-promisey goodness:
+To start, only the `then` and `catch` methods are exposed. But once you've
+called `.then` or `.catch` once, you've got a proper [Bluebird] promise that
+supports the whole gamut of promisey goodness:
 
 ```js
 request(app)

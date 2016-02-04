@@ -27,6 +27,11 @@ function makeModule(Promise) {
     return this.toPromise().then(onFulfilled, onRejected);
   }
 
+  function _catch(onRejected) {
+    var promise = this.toPromise();
+    return promise.catch.apply(promise, arguments);
+  }
+
   // Creates a new object that wraps `factory`, where each HTTP method
   // (`get`, `post`, etc.) is overriden to inject a `then` method into
   // the returned `Test` instance.
@@ -38,6 +43,7 @@ function makeModule(Promise) {
         var test = factory[method].apply(factory, arguments);
         test.toPromise = toPromise;
         test.then = then;
+        test.catch = _catch;
         return test;
       };
     });
