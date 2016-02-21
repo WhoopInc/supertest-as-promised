@@ -190,6 +190,10 @@ change. Breaking changes in each major version are listed below. Consult the
 [changelog] for a list of meaningful new features in each version; consult the
 commit log for a complete list.
 
+### Breaking changes in 3.0
+
+* [Bluebird][bluebird] has been upgraded to version 3.3.1.
+
 ### Breaking changes in 2.0
 
 * [Bluebird][bluebird] has been upgraded to version 2.9.24.
