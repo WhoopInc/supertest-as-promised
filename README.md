@@ -160,7 +160,7 @@ request(app)
 ### Node
 
 ```bash
-$ npm install supertest-as-promised
+$ npm install supertest supertest-as-promised
 ```
 
 SuperTest as Promised lists [`supertest`][SuperTest] as a
