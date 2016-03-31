@@ -1,3 +1,10 @@
+3.1.0 / 2016-03-30
+==================
+
+  * add `catch()` convenience method directly to test instance ([#23])
+
+Thanks, [@bbatha]!
+
 3.0.0 / 2016-02-21
 ==================
 
@@ -62,6 +69,8 @@ Thanks, [@srussellextensis]!
   * add changelog
   * initial commit
 
+[#23]: https://github.com/WhoopInc/supertest-as-promised/pull/23
 [#11]: https://github.com/WhoopInc/supertest-as-promised/pull/11
 
+[@bbatha]: https://github.com/bbatha
 [@srussellextensis]: https://github.com/srussellextensis
