@@ -5,6 +5,18 @@ var expect = require("chai").expect
   , supertest = require("supertest")
   , supertestAsPromised = require("..");
 
+function PromiseMock() {
+  var self = this;
+  ["then", "catch"].forEach(function (fn) {
+    self[fn] = function () {
+      this[fn].args.push([].slice.call(arguments));
+      return this;
+    }
+    self[fn].args = [];
+  })
+}
+PromiseMock.resolve = PromiseMock.reject = function () {};
+
 var server = http.createServer(function (req, res) {
   res.end("helo");
 });
@@ -42,12 +54,14 @@ describe("supertestAsPromised", function () {
       return expect(request.get("/home").expect(500)).to.eventually.be.rejected;
     });
 
-    it("should be able to catch failed promises", function () {
-      return request.get("/home").expect(400).catch(function () {
-        return true;
-      }).then(function (caught) {
-        expect(caught).to.be.true;
-      });
+    it("should call then with two arguments", function () {
+      var mock = supertestAsPromised(PromiseMock)(server).get("/home").then(1, 2, 3);
+      expect(mock.then.args).to.deep.equal([[1, 2]]);
+    });
+
+    it("should call catch with arbitrary arguments", function () {
+      var mock = supertestAsPromised(PromiseMock)(server).get("/home").catch(1, 2, 3);
+      expect(mock.catch.args).to.deep.equal([[1, 2, 3]]);
     });
   });
 
