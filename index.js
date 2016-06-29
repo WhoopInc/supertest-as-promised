@@ -15,6 +15,7 @@ function makeModule(Promise) {
     return new Promise(function (resolve, reject) {
       self.end(function (err, res) {
         if (err) {
+          err.response = res;
           reject(err);
           return;
         }
