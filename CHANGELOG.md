@@ -1,3 +1,10 @@
+3.2.0 / 2016-07-02
+==================
+
+  * attach `response` to error object to ease debugging of failed requests ([#30])
+
+Thanks, [@mkasberg]!
+
 3.1.0 / 2016-03-30
 ==================
 
@@ -69,8 +76,10 @@ Thanks, [@srussellextensis]!
   * add changelog
   * initial commit
 
+[#30]: https://github.com/WhoopInc/supertest-as-promised/issues/30
 [#23]: https://github.com/WhoopInc/supertest-as-promised/pull/23
 [#11]: https://github.com/WhoopInc/supertest-as-promised/pull/11
 
 [@bbatha]: https://github.com/bbatha
+[@mkasberg]: https://github.com/mkasberg
 [@srussellextensis]: https://github.com/srussellextensis
