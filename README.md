@@ -154,6 +154,36 @@ request(app)
   // I'm back to the default Bluebird promise!
 ```
 
+### Debugging
+
+Suppose your snazzy test
+
+```js
+it("should get kittens", function () {
+  return request(app).get("/kittens").expect(200)
+    .then(function (res) {
+      return expect(res.body).to.equal("kittens r cute!");
+    });
+});
+```
+
+suddenly starts failing with a "400 Bad Request" error. It'd sure be
+handy if you could print out the response body to see if the server
+mentioned what, in particular, was bad about your test. Chain on a
+`.catch` and inspect `err.response`:
+
+```js
+it("should get kittens", function () {
+  return request(app).get("/kittens").expect(200)
+    .then(function (res) {
+      return expect(res.text).to.equal("kittens r cute!");
+    })
+    .catch(function (err) {
+      console.log(err.response.text); // "You have viewed too many kittens today."
+    });
+});
+```
+
 
 ## Installation
 

@@ -54,6 +54,13 @@ describe("supertestAsPromised", function () {
       return expect(request.get("/home").expect(500)).to.eventually.be.rejected;
     });
 
+    it("should provide response on error object", function () {
+      return request.get("/home").expect(500)
+        .catch(function (err) {
+          return expect(err.response.text).to.equal("helo");
+        });
+    });
+
     it("should call then with two arguments", function () {
       var mock = supertestAsPromised(PromiseMock)(server).get("/home").then(1, 2, 3);
       expect(mock.then.args).to.deep.equal([[1, 2]]);
