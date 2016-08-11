@@ -1,3 +1,10 @@
+4.0.0 / 2016-08-11
+==================
+
+  * mark `err.response` as non-enumerable to avoid cluttering console output ([#34])
+
+Thanks, [@sylvaingi]!
+
 3.2.0 / 2016-07-02
 ==================
 
@@ -76,6 +83,7 @@ Thanks, [@srussellextensis]!
   * add changelog
   * initial commit
 
+[#34]: https://github.com/WhoopInc/supertest-as-promised/pull/34
 [#30]: https://github.com/WhoopInc/supertest-as-promised/issues/30
 [#23]: https://github.com/WhoopInc/supertest-as-promised/pull/23
 [#11]: https://github.com/WhoopInc/supertest-as-promised/pull/11
@@ -83,3 +91,4 @@ Thanks, [@srussellextensis]!
 [@bbatha]: https://github.com/bbatha
 [@mkasberg]: https://github.com/mkasberg
 [@srussellextensis]: https://github.com/srussellextensis
+[@sylvaingi]: https://github.com/sylvaingi
