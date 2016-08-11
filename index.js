@@ -15,7 +15,12 @@ function makeModule(Promise) {
     return new Promise(function (resolve, reject) {
       self.end(function (err, res) {
         if (err) {
-          err.response = res;
+          // Attach response to error object so that details about the failure
+          // (e.g., the response body) can be accessed by a `.catch` handler
+          // (#30).  Use `Object.defineProperty` so that `.response` is
+          // non-enumerable; otherwise, the error message is lost in the sea of
+          // the response object (#34).
+          Object.defineProperty(err, 'response', { value: res });
           reject(err);
           return;
         }
