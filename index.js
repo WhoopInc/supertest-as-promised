@@ -15,7 +15,11 @@ function makeModule(Promise) {
     return new Promise(function (resolve, reject) {
       self.end(function (err, res) {
         if (err) {
-          err.response = res;
+          Object.defineProperty(err, 'response', {
+            get: function () {
+              return res;
+            }
+          });
           reject(err);
           return;
         }
