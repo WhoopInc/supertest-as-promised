@@ -1,6 +1,7 @@
 var methods = require("methods")
   , PromiseBluebird = require("bluebird")
-  , supertest = require("supertest");
+  , supertest = require("supertest")
+  , util = require("util");
 
 // Support SuperTest's historical `del` alias for `delete`
 methods = methods.concat("del");
@@ -41,12 +42,10 @@ function makeModule(Promise) {
   // Creates a new object that wraps `factory`, where each HTTP method
   // (`get`, `post`, etc.) is overriden to inject a `then` method into
   // the returned `Test` instance.
-  function wrap(factory) {
-    var out = {};
-
+  function wrap(factory, out) {
     methods.forEach(function (method) {
       out[method] = function () {
-        var test = factory[method].apply(factory, arguments);
+        var test = factory[method].apply(this, arguments);
         test.toPromise = toPromise;
         test.then = then;
         test.catch = _catch;
@@ -59,13 +58,19 @@ function makeModule(Promise) {
 
   out = function () {
     var request = supertest.apply(null, arguments);
-    return wrap(request);
+    return wrap(request, {});
   }
 
   out.agent = function () {
-    var agent = supertest.agent.apply(null, arguments);
-    return wrap(agent);
-  };
+    var self = this;
+    if (!(this instanceof out.agent)) {
+      self = Object.create(out.agent.prototype);
+    }
+    supertest.agent.apply(self, arguments);
+    return self;
+  }
+  util.inherits(out.agent, supertest.agent);
+  wrap(supertest.agent.prototype, out.agent.prototype);
 
   return out;
 }

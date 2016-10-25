@@ -94,6 +94,10 @@ describe("supertestAsPromised", function () {
     it("should reject if an assertion fails", function () {
       return expect(agent.get("/home").expect(500)).to.eventually.be.rejected;
     });
+
+    it("should be an instance of TestAgent", function () {
+      expect(agent).to.be.an.instanceof(supertest.agent);
+    });
   });
 });
 
