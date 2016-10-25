@@ -1,3 +1,10 @@
+4.0.1 / 2016-10-24
+==================
+
+  * expose additional `agent` properties through inheritance chain ([#38])
+
+Thanks, [@jsdevwork]!
+
 4.0.0 / 2016-08-11
 ==================
 
@@ -83,6 +90,7 @@ Thanks, [@srussellextensis]!
   * add changelog
   * initial commit
 
+[#38]: https://github.com/WhoopInc/supertest-as-promised/issues/38
 [#34]: https://github.com/WhoopInc/supertest-as-promised/pull/34
 [#30]: https://github.com/WhoopInc/supertest-as-promised/issues/30
 [#23]: https://github.com/WhoopInc/supertest-as-promised/pull/23
@@ -90,5 +98,6 @@ Thanks, [@srussellextensis]!
 
 [@bbatha]: https://github.com/bbatha
 [@mkasberg]: https://github.com/mkasberg
+[@jsdevwork]: https://github.com/jsdevwork
 [@srussellextensis]: https://github.com/srussellextensis
 [@sylvaingi]: https://github.com/sylvaingi
