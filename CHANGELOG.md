@@ -1,58 +1,53 @@
-4.0.1 / 2016-10-24
-==================
+# Changelog
+
+## 4.0.2 / Unreleased
+
+## 4.0.1 / 2016-10-24
 
   * expose additional `agent` properties through inheritance chain ([#38])
 
 Thanks, [@jsdevwork]!
 
-4.0.0 / 2016-08-11
-==================
+## 4.0.0 / 2016-08-11
 
   * mark `err.response` as non-enumerable to avoid cluttering console output ([#34])
 
 Thanks, [@sylvaingi]!
 
-3.2.0 / 2016-07-02
-==================
+## 3.2.0 / 2016-07-02
 
   * attach `response` to error object to ease debugging of failed requests ([#30])
 
 Thanks, [@mkasberg]!
 
-3.1.0 / 2016-03-30
-==================
+## 3.1.0 / 2016-03-30
 
   * add `catch()` convenience method directly to test instance ([#23])
 
 Thanks, [@bbatha]!
 
-3.0.0 / 2016-02-21
-==================
+## 3.0.0 / 2016-02-21
 
   * update Bluebird to v3.x series
 
-2.0.2 / 2015-06-05
-==================
+## 2.0.2 / 2015-06-05
 
   * fix double-resolution of promise upon error ([#11])
 
 Thanks, [@srussellextensis]!
 
-2.0.1 / 2015-05-12
-==================
+## 2.0.1 / 2015-05-12
 
   * bump dev dependencies for compatibility with SuperTest's v1.0.0 test
     suite.
 
-2.0.0 / 2015-04-06
-==================
+## 2.0.0 / 2015-04-06
 
   * add `toPromise()` method to explicitly convert request to promise
   * support custom promise libraries
   * update Bluebird to v2.x series
 
-1.0.0 / 2014-07-01
-==================
+## 1.0.0 / 2014-07-01
 
   * release: v1.0.0
   * support `del` by passing through to upstream's alias
@@ -67,8 +62,7 @@ Thanks, [@srussellextensis]!
     temporary variable for clarity.
   * CHANGELOG: update for v0.1.1
 
-0.1.1 / 2014-05-19
-==================
+## 0.1.1 / 2014-05-19
 
   * release: v0.1.1
   * refactor factory wrapping
@@ -79,8 +73,7 @@ Thanks, [@srussellextensis]!
     changelog generation is a bit out-of-sync.
   * release: v0.1.0
 
-0.1.0 / 2014-05-19
-==================
+## 0.1.0 / 2014-05-19
 
   * README: fix package name in code example
   * promisify and expose SuperTest agents
