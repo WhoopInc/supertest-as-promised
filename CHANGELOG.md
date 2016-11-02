@@ -1,6 +1,13 @@
 # Changelog
 
+We follow [semver]: the major version number will be upgraded with any
+breaking change. This changelog lists all meaningful changes in each
+release; consult the main [README] to determine which changes are
+breaking.
+
 ## 4.0.2 / Unreleased
+
+  * [[#39]] Bring list of breaking changes in the [README] up-to-date. Thanks, [@karlbecker]!
 
 ## 4.0.1 / 2016-10-24
 
@@ -83,6 +90,7 @@ Thanks, [@srussellextensis]!
   * add changelog
   * initial commit
 
+[#39]: https://github.com/WhoopInc/supertest-as-promised/issues/39
 [#38]: https://github.com/WhoopInc/supertest-as-promised/issues/38
 [#34]: https://github.com/WhoopInc/supertest-as-promised/pull/34
 [#30]: https://github.com/WhoopInc/supertest-as-promised/issues/30
@@ -90,7 +98,11 @@ Thanks, [@srussellextensis]!
 [#11]: https://github.com/WhoopInc/supertest-as-promised/pull/11
 
 [@bbatha]: https://github.com/bbatha
+[@karlbecker]: https://github.com/karlbecker
 [@mkasberg]: https://github.com/mkasberg
 [@jsdevwork]: https://github.com/jsdevwork
 [@srussellextensis]: https://github.com/srussellextensis
 [@sylvaingi]: https://github.com/sylvaingi
+
+[README]: README.md
+[semver]: http://semver.org

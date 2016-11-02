@@ -220,6 +220,10 @@ change. Breaking changes in each major version are listed below. Consult the
 [changelog] for a list of meaningful new features in each version; consult the
 commit log for a complete list.
 
+### Breaking changes in 4.0
+
+* In `.catch` handlers, `err.response` is now marked as non-enumerable.
+
 ### Breaking changes in 3.0
 
 * [Bluebird][bluebird] has been upgraded to version 3.3.1.
