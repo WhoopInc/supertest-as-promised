@@ -81,6 +81,19 @@ describe("GET /kittens", function () {
 });
 ```
 
+You can even use the [native Promise API][native-promise] to demand
+success from several requests at once:
+
+```js
+describe("GET ALL THE KITTENS", function () {
+  it("should work", function () {
+    let kittens = request(app).get("/kittens").expect(200);
+    let moar_kittens = request(app).get("/MOAR-KITTENS").expect(200);
+    return Promise.all(kittens, moar_kittens);
+  });
+});
+```
+
 ### Agents
 
 If you use a SuperTest agent to persist cookies, those are thenable too:
@@ -97,35 +110,35 @@ agent
 ```
 
 
-### Promisey goodness
+### Promisey guts
 
-To start, only the `then` and `catch` methods are exposed. But once you've
-called `.then` or `.catch` once, you've got a proper [Bluebird] promise that
-supports the whole gamut of promisey goodness:
+To start, your test objects are thenables, not proper
+[`Promise`][native-promise] objects. But as soon as you call `.then()`
+or `.catch()`, you'll have a real `Promise` on your hands:
 
 ```js
-request(app)
+var test = request(app)
   .get("/kittens")
-  .expect(201)
-  .then(function (res) { /* ... */ })
-  // I'm a real promise now!
-  .catch(function (err) { /* ... */ })
+  .expect(201);
+test instanceof Promise // false
+test.then(res => { /* ... */ }) instanceof Promise // true
 ```
-
-See the [Bluebird API][bluebird-api] for everything that's available.
 
 You may find it cleaner to cast directly to a promise using the `toPromise`
 method:
 
 ```js
-request(app)
+var test = request(app)
   .get("/kittens")
   .expect(201)
   .toPromise()
-  // I'm a real promise now!
-  .delay(10)
-  .then(function (res) { /* ... */ })
+test instanceof Promise // true
 ```
+
+**Note:** Old versions of SuperTest as Promised used the [Bluebird]
+promise library. Since version 5, the [native Promise
+API][native-promise] is used instead. If you'd prefer the old behavior,
+supply your own Bluebird module using the BYOP feature described below.
 
 ### BYOP: Bring your own `Promise`
 
@@ -143,15 +156,16 @@ var when = require("when")
 request = require("supertest-as-promised")(when.Promise);
 request(app)
   .get("/when.js")
-  .then(function (res) { /* ... */ })
+  .toPromise()
   // I'm a when.js promise! (instanceof when.Promise == true)
   .frobulate()
+  .then(function (res) { /* ... */ })
 
 request = require("supertest-as-promised");
 request(app)
   .get("/bluebird.js")
   .then(function (res) { /* .. */ })
-  // I'm back to the default Bluebird promise!
+  // I'm back to the default JS promise!
 ```
 
 ### Debugging
@@ -220,6 +234,19 @@ change. Breaking changes in each major version are listed below. Consult the
 [changelog] for a list of meaningful new features in each version; consult the
 commit log for a complete list.
 
+### Breaking changes in 5.0
+
+* [Native Promises][native-promise] returned by default, rather than
+  [Bluebird] promises.
+
+If you relied on convenience methods on Bluebird `Promise` instances
+that are not present on the native `Promise` instances, you can supply
+your own Bluebird module for constructing promises. See "BYOP: Bring
+your own `Promise`" above.
+
+The 4.x series is still supported for environments (e.g. Node 0.10 and
+earlier) without support for the native Promise API.
+
 ### Breaking changes in 4.0
 
 * In `.catch` handlers, `err.response` is now marked as non-enumerable.
@@ -235,6 +262,7 @@ commit log for a complete list.
 [bluebird]: https://github.com/petkaantonov/bluebird
 [bluebird-api]: https://github.com/petkaantonov/bluebird/blob/master/API.md#promiseisdynamic-value---boolean
 [changelog]: CHANGELOG.md
+[native-promise]: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise
 [peer-dependency]: http://blog.nodejs.org/2013/02/07/peer-dependencies/
 [semver]: http://semver.org
 [SuperTest]: https://github.com/visionmedia/supertest

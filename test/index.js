@@ -1,6 +1,5 @@
 var expect = require("chai").expect
   , http = require("http")
-  , Promise = require("bluebird")
   , PromiseWhen = require("when").Promise
   , supertest = require("supertest")
   , supertestAsPromised = require("..");
@@ -60,6 +59,20 @@ describe("supertestAsPromised", function () {
           return expect(err.response.text).to.equal("helo");
         });
     });
+
+    it("should fulfill with Promise.all when all successful", function () {
+      return expect(Promise.all([
+        request.get("/home1").expect(200),
+        request.get("/home2").expect(200),
+      ])).to.eventually.be.fulfilled;
+    });
+
+    it("should reject with Promise.all when not successful", function () {
+      return expect(Promise.all([
+        request.get("/home1").expect(200),
+        request.get("/home2").expect(500),
+      ])).to.eventually.be.rejected;
+    })
 
     it("should call then with two arguments", function () {
       var mock = supertestAsPromised(PromiseMock)(server).get("/home").then(1, 2, 3);
