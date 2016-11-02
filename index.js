@@ -1,5 +1,4 @@
 var methods = require("methods")
-  , PromiseBluebird = require("bluebird")
   , supertest = require("supertest")
   , util = require("util");
 
@@ -79,7 +78,7 @@ function makeModule(Promise) {
 // used without an explicit `Promise` constructor. Pass these requests
 // through to a default module that uses Bluebird promises.
 
-var defaultModule = makeModule(PromiseBluebird);
+var defaultModule = makeModule(Promise);
 
 module.exports = function (maybePromise) {
   if (typeof maybePromise.resolve === 'function' &&
