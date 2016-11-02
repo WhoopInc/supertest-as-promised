@@ -5,7 +5,7 @@ breaking change. This changelog lists all meaningful changes in each
 release; consult the main [README] to determine which changes are
 breaking.
 
-## 4.0.2 / Unreleased
+## 4.0.2 / 2016-11-02
 
   * [[#39]] Bring list of breaking changes in the [README] up-to-date. Thanks, [@karlbecker]!
 

@@ -1,6 +1,6 @@
 {
   "name": "supertest-as-promised",
-  "version": "4.0.1",
+  "version": "4.0.2",
   "description": "Supercharge supertest with a promise interface",
   "main": "index.js",
   "scripts": {
