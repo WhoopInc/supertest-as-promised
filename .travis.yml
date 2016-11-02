@@ -6,3 +6,11 @@ node_js:
 - "0.12"
 - "0.10"
 sudo: false
+deploy:
+  provider: npm
+  email: nikhil.benesch@gmail.com
+  api_key:
+    secure: OBKShdM6H036C452HerUpJ1PidHQyMWe5z4tMZsgIN0gpsFwujfYG2KOjx6c3UrWkfE4OM0pNxupEM+jaUA/YT/ms8kFvKXaoGMMZan5yCrUeZd6v5mDLSZMbkRBmD2hMXODPVVokE0ox/ManaFWuGDQOWVgjdbFrzYRuKUuvRI=
+  on:
+    tags: true
+    repo: WhoopInc/supertest-as-promised
