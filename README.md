@@ -12,6 +12,8 @@
 
 SuperTest as Promised supercharges [SuperTest] with a `then` method.
 
+To see the full documentation, just checkout [SuperAgent](http://visionmedia.github.io/superagent/), on which [SuperTest] is based. 
+
 Instead of layering callbacks on callbacks in your tests:
 
 ```js
