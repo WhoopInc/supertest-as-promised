@@ -12,8 +12,6 @@
 
 SuperTest as Promised supercharges [SuperTest] with a `then` method.
 
-To see the full documentation, just checkout [SuperAgent](http://visionmedia.github.io/superagent/), on which [SuperTest] is based. 
-
 Instead of layering callbacks on callbacks in your tests:
 
 ```js
@@ -82,6 +80,20 @@ describe("GET /kittens", function () {
   });
 });
 ```
+
+### Upstream documentation
+
+SuperTest as Promised is built on top of [SuperTest], which is in turn
+built on top of [SuperAgent]. You'll want to be familiar with both of
+those packages' APIs.
+
+Here's the quick rundown if you're unfamiliar. SuperAgent is a generic
+HTTP client that provides methods for fluently constructing HTTP requests
+(e.g., `.get`, `.send`, `.query`, `.auth`). See the
+[SuperAgent docs][SuperAgent] for a full list of methods. SuperTest allows
+you to tack on assertions about e.g. response status (`.expect(200)`) or
+content (`.expect(/^kitties are \w+$/)`) to a SuperAgent request. See the
+[`.expect` function API][expect-api] in the SuperTest documentation for details.
 
 ### Agents
 
@@ -237,7 +249,9 @@ commit log for a complete list.
 [bluebird]: https://github.com/petkaantonov/bluebird
 [bluebird-api]: https://github.com/petkaantonov/bluebird/blob/master/API.md#promiseisdynamic-value---boolean
 [changelog]: CHANGELOG.md
+[expect-api]: https://github.com/visionmedia/supertest#api
 [peer-dependency]: http://blog.nodejs.org/2013/02/07/peer-dependencies/
 [semver]: http://semver.org
+[SuperAgent]: http://visionmedia.github.io/superagent/
 [SuperTest]: https://github.com/visionmedia/supertest
 [when.js]: https://github.com/cujojs/when
