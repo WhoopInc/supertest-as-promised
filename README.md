@@ -10,6 +10,58 @@
     align="right" valign="top" alt="Build Status">
 </a>
 
+**This project is deprecated!** As of v2.0.0, [SuperTest] has native
+support for promises. **Don't use SuperTest as Promised in new projects**;
+use SuperTest directly!
+
+If you're currently using SuperTest as Promised, here's how to switch to
+native SuperTest:
+
+   * SuperTest returns only ES6 promises. SuperTest as Promised, by
+     contrast, returns [Bluebird] promises by default, or promise
+     objects from a library of your choosing using [BYOP
+     support](#byop-bring-your-own-promise). Every promise library worth
+     its salt supports ES6 promise interop, though, so it should be a
+     small matter to cast ES6 promises to your custom promise library's
+     promises. Here's a simple SuperTest as Promised snippet that relies
+     on the `.delay` method of Bluebird promises
+
+    ```js
+    var request = require("supertest-as-promised");
+
+    request(app)
+      .get("/kittens")
+      .expect(201)
+      .toPromise()
+      .delay(10)
+      .then(function (res) { /* ... */ })
+    ```
+
+    that can be trivially converted to use SuperTest 2.0 like so:
+
+    ```js
+    var request = require("supertest");
+    var BluebirdPromise = require("bluebird");
+
+    BluebirdPromise.resolve(
+      request(app)
+        .get("/kittens")
+        .expect(201))
+      .delay(10)
+      .then(function (res) { /* ... */ })
+    ```
+
+   * SuperTest does not ship a `.toPromise` method. You'll need to
+     remove calls to this method. You were probably using `.toPromise`
+     because you wanted a proper Promise object.
+     `YourPromiseLibrary.resolve(...)` will probably do the trick; see
+     the example above.
+
+SuperTest as Promised will continue to receive bugfixes, but no new
+features. Cheers, folks! It's been a good two years.
+
+## Overview
+
 SuperTest as Promised supercharges [SuperTest] with a `then` method.
 
 Instead of layering callbacks on callbacks in your tests:

@@ -5,6 +5,12 @@ breaking change. This changelog lists all meaningful changes in each
 release; consult the main [README] to determine which changes are
 breaking.
 
+## --- / 2016-12-29
+
+  * SuperTest as Promised is deprecated. Thanks, [@jasisk]!
+
+See the README for instructions on upgrading to SuperTest 2.0.
+
 ## 4.0.2 / 2016-11-02
 
   * [[#39]] Bring list of breaking changes in the [README] up-to-date. Thanks, [@karlbecker]!
@@ -100,6 +106,7 @@ Thanks, [@srussellextensis]!
 [@bbatha]: https://github.com/bbatha
 [@karlbecker]: https://github.com/karlbecker
 [@mkasberg]: https://github.com/mkasberg
+[@jasisk]: https://github.com/jasisk
 [@jsdevwork]: https://github.com/jsdevwork
 [@srussellextensis]: https://github.com/srussellextensis
 [@sylvaingi]: https://github.com/sylvaingi
