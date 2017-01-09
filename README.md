@@ -69,6 +69,8 @@ Instead of layering callbacks on callbacks in your tests:
 ```js
 request(app)
   .get("/user")
+  .query({ foo: 'fooValue', bar: 'barValue' })
+  .auth('username', 'password')
   .expect(200, function (err, res) {
     if (err) return done(err);
 
