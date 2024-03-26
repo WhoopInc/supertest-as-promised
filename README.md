@@ -1,3 +1,5 @@
+## Notice: This repository is no longer maintained as of 3/26/2024
+
 <a href="http://promisesaplus.com/">
   <img src="https://promises-aplus.github.io/promises-spec/assets/logo-small.png"
     align="right" valign="top" alt="Promises/A+ logo">
